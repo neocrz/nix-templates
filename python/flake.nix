@@ -17,26 +17,25 @@
         default = pkgs.mkShell {
           venvDir = ".venv";
           packages = with pkgs; [ 
-            chromium
             python311
-            pandoc
-            playwright
-            playwright-driver
-            texliveTeTeX
-            texlivePackages.tcolorbox
+            # pandoc
+            # playwright
+            # playwright-driver
+            # texliveTeTeX
+            # texlivePackages.tcolorbox
           ] ++
             (with pkgs.python311Packages; [
               jupyterlab
-              libevdev
-              matplotlib
-              nbconvert
-              pandas
-              pandocfilters
+              # libevdev
+              # matplotlib
+              # nbconvert
+              # pandas
+              # pandocfilters
               pip
               playwright
-              pypandoc
+              # pypandoc
               venvShellHook
-              tensorflow
+              # tensorflow
           ]);
           postVenvCreation = ''
             unset SOURCE_DATE_EPOCH

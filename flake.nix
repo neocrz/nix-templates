@@ -11,23 +11,21 @@
     forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
       pkgs = import nixpkgs { inherit overlays system; };
     });
-
+    templateNames = [ 
+        "empty" 
+        "python"
+        "r"
+        "zig"
+    ];
+    templates = nixpkgs.lib.listToAttrs (map (name: {
+      inherit name;
+      value = {
+        path = ./${name};
+        description = "${name} Project";
+      };
+      }) templateNames) // { default = templates.empty; };
   in
   {
-    templates = rec {
-      default = empty;
-      empty = {
-        path = ./empty;
-        description = "Empty dev template that you can customize at will";
-      };
-      python = {
-        path = ./python;
-        description = "Python Project";
-      };
-      r = {
-        path = ./r;
-        description = "R Project";
-      };
-    };
+    inherit templates;
   };
 }

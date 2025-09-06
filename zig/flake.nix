@@ -16,16 +16,16 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
+            clang-tools
+            gdb
+            glfw
+            kcov
+            libGL
+            linuxPackages_latest.perf
+            python3
+            valgrind
             zls
             zig_0_14
-            valgrind
-            gdb
-            python3
-            glfw
-            libGL
-            clang-tools
-            linuxPackages_latest.perf
-            kcov
           ];
         };
       });
